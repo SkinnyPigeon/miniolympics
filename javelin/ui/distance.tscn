@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c0n15xourbh6b"]
+
+[node name="Panel" type="Panel"]
+offset_right = 64.0
+offset_bottom = 24.0
+
+[node name="distance" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 63.0
+offset_bottom = 24.0
+text = "0.00"
+horizontal_alignment = 2

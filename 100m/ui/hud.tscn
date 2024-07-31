@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://jwidiw8goxr0"]
+
+[ext_resource type="PackedScene" uid="uid://fb8vrwct8h1u" path="res://100m/ui/speed.tscn" id="1_5ve25"]
+[ext_resource type="PackedScene" uid="uid://buoo4cb04ame5" path="res://100m/ui/stop_watch.tscn" id="2_b7o7j"]
+[ext_resource type="PackedScene" uid="uid://dfydf46xu8ou5" path="res://100m/ui/start_timer.tscn" id="3_b3kyc"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="speed" parent="." instance=ExtResource("1_5ve25")]
+position = Vector2(320, 440)
+
+[node name="StopWatch" parent="." instance=ExtResource("2_b7o7j")]
+offset_left = 512.0
+offset_top = 24.0
+offset_right = 576.0
+offset_bottom = 48.0
+
+[node name="start_timer" parent="." instance=ExtResource("3_b3kyc")]
+offset_left = 280.0
+offset_top = 392.0
+offset_right = 360.0
+offset_bottom = 416.0

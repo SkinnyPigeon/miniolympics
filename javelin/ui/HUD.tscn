@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmb706w5gwphf"]
+
+[ext_resource type="PackedScene" uid="uid://c4u3einf6qogl" path="res://javelin/ui/speed.tscn" id="1_rul1s"]
+[ext_resource type="PackedScene" uid="uid://8kr7k7mapaom" path="res://javelin/ui/power.tscn" id="2_5dola"]
+[ext_resource type="PackedScene" uid="uid://c0n15xourbh6b" path="res://javelin/ui/distance.tscn" id="3_ls34c"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="speed" parent="." instance=ExtResource("1_rul1s")]
+position = Vector2(208, 440)
+
+[node name="power" parent="." instance=ExtResource("2_5dola")]
+position = Vector2(432, 400)
+scale = Vector2(0.5, 0.5)
+
+[node name="Panel" parent="." instance=ExtResource("3_ls34c")]
+offset_left = 480.0
+offset_top = 40.0
+offset_right = 544.0
+offset_bottom = 64.0
