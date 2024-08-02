@@ -17,6 +17,8 @@ var is_flying: bool = true
 @onready var distance_indicator: Label = get_node("../../CanvasLayer/Panel/distance")
 @onready var fault_line: CollisionShape2D = get_node("../../FaultLine/CollisionShape2D")
 
+@onready var javelin_success: AudioStreamPlayer2D = $Success
+
 var start_position: Vector2 = Vector2.ZERO
 var distance: float = 0.0
 
@@ -31,6 +33,7 @@ func set_angle(angle):
 func landed():
 	is_flying = false
 	javelin_velocity = Vector2.ZERO
+	javelin_success.play()
 
 func _ready():
 	camera.limit_left = 0

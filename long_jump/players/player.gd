@@ -39,6 +39,11 @@ var distance: float = 0.0
 @onready var speed_indicator: AnimatedSprite2D = get_node("../CanvasLayer/speed")
 @onready var angle_indicator: AnimatedSprite2D = get_node("../CanvasLayer/power")
 
+@onready var player_jump: AudioStreamPlayer2D = $PlayerJump
+@onready var player_dead: AudioStreamPlayer2D = $Dead
+@onready var player_success: AudioStreamPlayer2D = $Success
+@onready var player_failed: AudioStreamPlayer2D = $Fail
+
 func accelerate():
 	var acceleration = base_acceleration * (1 - (speed / max_speed))
 	speed = clamp(speed + acceleration, 0, max_speed)
@@ -53,6 +58,7 @@ func jump():
 	jump_speed = speed
 	jumped = true
 	speed = 0
+	player_jump.play()
 	$AnimatedSprite2D.play("jump")
 	base_deceleration = 0.0
 	var angle_radians = deg_to_rad(angle)
@@ -67,6 +73,7 @@ func landed():
 		return
 	has_landed = true
 	jump_velocity = Vector2.ZERO
+	player_success.play()
 	$AnimatedSprite2D.play("celebrate")
 
 func fault(ids):
@@ -74,11 +81,13 @@ func fault(ids):
 		return
 	if jumped:
 		return
+	player_dead.play()
 	$AnimatedSprite2D.play("dead")
 	angle_indicator.pause()
 	dead = true
 	base_acceleration = 0
 	base_deceleration = 200
+	player_failed.play()
 
 func death(ids):
 	if not get_instance_id() in ids:
@@ -87,9 +96,11 @@ func death(ids):
 	angle_indicator.pause()
 	dead = true
 	has_landed = true
+	player_dead.play()
 	jump_velocity.y = 0
 	base_acceleration = 0
 	base_deceleration = 200
+	player_failed.play()
 
 func _ready():
 	camera.limit_left = 0

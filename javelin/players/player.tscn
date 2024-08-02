@@ -1,7 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://2ymb6yc1p6yk"]
+[gd_scene load_steps=28 format=3 uid="uid://2ymb6yc1p6yk"]
 
 [ext_resource type="Texture2D" uid="uid://dkn2xx723rs8k" path="res://javelin/sprites/skeleton/SpriteSheet.png" id="1_fjegh"]
 [ext_resource type="Script" path="res://javelin/players/player.gd" id="1_kyqyy"]
+[ext_resource type="AudioStream" uid="uid://cppextaq86ed7" path="res://sound/sfx/PowerUp1.wav" id="3_4s0k7"]
+[ext_resource type="AudioStream" uid="uid://cqffr03pia15r" path="res://sound/sfx/GameOver2.wav" id="5_3feyh"]
+[ext_resource type="AudioStream" uid="uid://dvy1r7qxked8p" path="res://sound/sfx/Explosion.wav" id="6_eu8ce"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sotx6"]
 atlas = ExtResource("1_fjegh")
@@ -199,5 +202,14 @@ animation = &"throw"
 shape = SubResource("CapsuleShape2D_da070")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ThrowJavelin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4s0k7")
+
+[node name="Fail" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_3feyh")
+
+[node name="Dead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_eu8ce")
 
 [connection signal="area_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_area_entered"]

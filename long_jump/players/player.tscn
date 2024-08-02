@@ -1,7 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dpffam7phs3h7"]
+[gd_scene load_steps=27 format=3 uid="uid://dpffam7phs3h7"]
 
 [ext_resource type="Texture2D" uid="uid://canxicrnks107" path="res://long_jump/sprites/skeleton/SpriteSheet2.png" id="1_oijlj"]
 [ext_resource type="Script" path="res://long_jump/players/player.gd" id="1_u37n0"]
+[ext_resource type="AudioStream" uid="uid://k0263hw8irdf" path="res://sound/sfx/Jump.wav" id="3_pnpvd"]
+[ext_resource type="AudioStream" uid="uid://dvy1r7qxked8p" path="res://sound/sfx/Explosion.wav" id="4_2q3e8"]
+[ext_resource type="AudioStream" uid="uid://cyl0popedgm1r" path="res://sound/sfx/Success1.wav" id="5_p1w6n"]
+[ext_resource type="AudioStream" uid="uid://cqffr03pia15r" path="res://sound/sfx/GameOver2.wav" id="6_s1oc6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i424s"]
 atlas = ExtResource("1_oijlj")
@@ -168,7 +172,7 @@ script = ExtResource("1_u37n0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3glxr")
 animation = &"idle"
-frame_progress = 0.7103
+frame_progress = 0.370734
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 
@@ -176,3 +180,15 @@ frame_progress = 0.7103
 shape = SubResource("CapsuleShape2D_3djxq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PlayerJump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pnpvd")
+
+[node name="Dead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_2q3e8")
+
+[node name="Success" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_p1w6n")
+
+[node name="Fail" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_s1oc6")

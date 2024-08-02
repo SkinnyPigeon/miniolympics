@@ -18,6 +18,11 @@ var dead = false
 @onready var speed_indicator: AnimatedSprite2D = get_node("../CanvasLayer/speed")
 @onready var angle_indicator: AnimatedSprite2D = get_node("../CanvasLayer/power")
 
+@onready var throw_sound: AudioStreamPlayer2D = $ThrowJavelin
+@onready var player_success: AudioStreamPlayer2D = $Success
+@onready var player_fail: AudioStreamPlayer2D = $Fail
+@onready var player_dead: AudioStreamPlayer2D = $Dead
+
 
 @onready var fault_line: Area2D = get_node("../FaultLine")
 const JAVELIN = preload("res://javelin/players/javelin.tscn")
@@ -35,8 +40,10 @@ func fault(ids):
 		return
 	$AnimatedSprite2D.play("dead")
 	dead = true
+	player_dead.play()
 	base_acceleration = 0
 	base_deceleration = 200
+	player_fail.play()
 
 func throw():
 	if dead or thrown:
@@ -51,6 +58,7 @@ func throw():
 	javelin.velocity = velocity
 	javelin.set_speed(speed)
 	javelin.set_angle(angle)
+	throw_sound.play()
 	$AnimatedSprite2D.play("throw_recovery")
 	base_acceleration = 0
 	base_deceleration = 800

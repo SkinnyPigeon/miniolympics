@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://3062ynmlpkij"]
+[gd_scene load_steps=7 format=3 uid="uid://3062ynmlpkij"]
 
 [ext_resource type="Texture2D" uid="uid://hqbkhith6r77" path="res://javelin/sprites/skeleton/javelin.png" id="1_di1iw"]
 [ext_resource type="Script" path="res://javelin/players/javelin.gd" id="1_uayss"]
+[ext_resource type="AudioStream" uid="uid://cyl0popedgm1r" path="res://sound/sfx/Success1.wav" id="3_hqo14"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_meg6b"]
 atlas = ExtResource("1_di1iw")
@@ -34,3 +35,6 @@ position = Vector2(7.53372, 0.000791073)
 shape = SubResource("RectangleShape2D_ymktj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Success" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hqo14")
