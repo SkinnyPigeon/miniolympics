@@ -31,7 +31,6 @@ func set_angle(angle):
 func landed():
 	is_flying = false
 	javelin_velocity = Vector2.ZERO
-	print_debug(distance)
 
 func _ready():
 	camera.limit_left = 0
